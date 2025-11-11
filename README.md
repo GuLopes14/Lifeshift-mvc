@@ -470,17 +470,6 @@ Este projeto está licenciado sob a **MIT License** - veja o arquivo [LICENSE](L
 
 ---
 
-## 📞 Suporte
-
-Tem dúvidas ou encontrou um problema?
-
-- 📧 **Email**: [seu-email@exemplo.com]
-- 🐛 **Reportar Bug**: [Abrir uma Issue](https://github.com/GuLopes14/Lifeshift-mvc/issues)
-- 💡 **Sugerir Feature**: [Abrir uma Discussion](https://github.com/GuLopes14/Lifeshift-mvc/discussions)
-- 📚 **Documentação**: [Docs Completa](#)
-
----
-
 ## 🎉 Conclusão
 
 O **LifeShift** é mais do que uma aplicação — é uma **ferramenta de impacto social e educacional**.

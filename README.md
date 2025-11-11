@@ -434,32 +434,6 @@ A proposta reforça o compromisso com os **Objetivos de Desenvolvimento Sustent�
 
 ---
 
-## 🤝 Contribuindo
-
-Queremos sua ajuda para melhorar o LifeShift!
-
-### Passos para Contribuir:
-
-1. **Fork** o repositório
-2. **Crie uma branch** para sua feature (`git checkout -b feature/AmazingFeature`)
-3. **Commit** suas mudanças (`git commit -m 'Add some AmazingFeature'`)
-4. **Push** para a branch (`git push origin feature/AmazingFeature`)
-5. **Abra um Pull Request**
-
-### Diretrizes:
-- Siga o padrão de código do projeto
-- Adicione testes para novas funcionalidades
-- Atualize a documentação conforme necessário
-- Respeite o Code of Conduct
-
----
-
-## 📝 Licença
-
-Este projeto está licenciado sob a **MIT License** - veja o arquivo [LICENSE](LICENSE) para detalhes.
-
----
-
 ## 🎉 Conclusão
 
 O **LifeShift** é mais do que uma aplicação — é uma **ferramenta de impacto social e educacional**.

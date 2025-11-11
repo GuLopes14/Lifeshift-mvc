@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeShift - Comece sua Jornada</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <div class="w-10 h-10 gradient-bg rounded-xl flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                    </div>
+                    <span class="ml-3 text-xl font-bold text-gray-800">LifeShift</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="/perfil" class="text-sm font-medium text-blue-600 hover:text-blue-700">Novo Plano</a>
+                    <a href="/planos-salvos" class="text-sm text-gray-600 hover:text-gray-800">Meus Planos</a>
+                    <a href="/conta" class="flex items-center text-sm text-gray-600 hover:text-gray-800">
+                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                        </svg>
+                        Conta
+                    </a>
+                    <a href="/logout" class="text-sm text-gray-500 hover:text-gray-700">Sair</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl">
+                <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                    Sua nova carreira<br/>começa aqui
+                </h1>
+                <p class="text-xl text-blue-100 mb-8 leading-relaxed">
+                    Transforme sua trajetória profissional com planos personalizados gerados por 
+                    inteligência artificial. Em apenas alguns minutos, descubra o caminho ideal 
+                    para alcançar seus objetivos.
+                </p>
+                <button onclick="window.location.href='/perfil'" 
+                        class="bg-white text-blue-600 hover:bg-gray-50 font-semibold px-8 py-4 rounded-xl transition duration-200 shadow-lg inline-flex items-center group">
+                    <span>Criar Meu Plano de Carreira</span>
+                    <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Como funciona</h2>
+                <p class="text-xl text-gray-600">Três passos simples para transformar sua carreira</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover border border-gray-100">
+                    <div class="w-16 h-16 gradient-bg rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-3">1. Conte sobre você</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Preencha um formulário simples sobre sua profissão atual, habilidades 
+                        e onde você quer chegar profissionalmente.
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover border border-gray-100">
+                    <div class="w-16 h-16 gradient-bg rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-3">2. IA analisa seu perfil</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Nossa inteligência artificial processa suas informações e identifica os 
+                        melhores caminhos para sua transição de carreira.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover border border-gray-100">
+                    <div class="w-16 h-16 gradient-bg rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-3">3. Receba seu plano</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Obtenha um plano detalhado de 6 meses com passos claros, recursos de 
+                        aprendizado e marcos para alcançar sua nova carreira.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8 text-center">
+                <div>
+                    <div class="text-5xl font-bold gradient-bg bg-clip-text text-transparent mb-2">IA</div>
+                    <p class="text-gray-600">Tecnologia de Ponta</p>
+                </div>
+                <div>
+                    <div class="text-5xl font-bold gradient-bg bg-clip-text text-transparent mb-2">6 meses</div>
+                    <p class="text-gray-600">Plano Estruturado</p>
+                </div>
+                <div>
+                    <div class="text-5xl font-bold gradient-bg bg-clip-text text-transparent mb-2">∞</div>
+                    <p class="text-gray-600">Planos Ilimitados</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 gradient-bg text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                Pronto para a mudança?
+            </h2>
+            <p class="text-xl text-blue-100 mb-8">
+                Milhares de profissionais já transformaram suas carreiras. Você é o próximo!
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button onclick="window.location.href='/perfil'" 
+                        class="bg-white text-blue-600 hover:bg-gray-50 font-semibold px-8 py-4 rounded-xl transition duration-200 shadow-lg">
+                    Começar Agora
+                </button>
+                <button onclick="window.location.href='/planos-salvos'" 
+                        class="bg-blue-500/30 text-white hover:bg-blue-500/40 font-semibold px-8 py-4 rounded-xl transition duration-200 border-2 border-white/30">
+                    Ver Meus Planos
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-300 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-sm">Global Solution FIAP 2025/2 — O Futuro do Trabalho</p>
+        </div>
+    </footer>
+</body>
+</html>

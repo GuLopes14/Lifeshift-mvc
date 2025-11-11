@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeShift - Minha Conta</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <div class="w-10 h-10 gradient-bg rounded-xl flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                    </div>
+                    <span class="ml-3 text-xl font-bold text-gray-800">LifeShift</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="/intro" class="text-sm text-gray-600 hover:text-gray-800">Início</a>
+                    <a href="/planos-salvos" class="text-sm text-gray-600 hover:text-gray-800">Meus Planos</a>
+                    <a href="/perfil" class="text-sm font-medium text-blue-600 hover:text-blue-700">Novo Plano</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <!-- Page Header -->
+        <div class="mb-8">
+            <h1 class="text-4xl font-bold text-gray-800 mb-2">Minha Conta</h1>
+            <p class="text-xl text-gray-600">Gerencie suas informações e preferências</p>
+        </div>
+
+        <!-- Profile Card -->
+        <div class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden mb-6">
+            <!-- Header with Gradient -->
+            <div class="gradient-bg p-8 text-white">
+                <div class="flex items-center">
+                    <div class="relative">
+                        <img th:src="${userPicture}" 
+                             th:alt="${userName}"
+                             class="w-24 h-24 rounded-full border-4 border-white shadow-lg">
+                        <div class="absolute -bottom-2 -right-2 w-8 h-8 bg-green-500 rounded-full border-4 border-white"></div>
+                    </div>
+                    <div class="ml-6">
+                        <h2 class="text-3xl font-bold mb-1" th:text="${userName}">Nome do Usuário</h2>
+                        <p class="text-blue-100 text-lg" th:text="${userEmail}">email@exemplo.com</p>
+                        <div class="flex items-center mt-2 text-sm text-blue-100">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            Conta verificada via Google
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Account Details -->
+            <div class="p-8">
+                <h3 class="text-xl font-bold text-gray-800 mb-6">Informações da Conta</h3>
+                
+                <div class="space-y-4">
+                    <!-- Email -->
+                    <div class="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-sm font-medium text-gray-500">Email</p>
+                                <p class="text-base font-semibold text-gray-800" th:text="${userEmail}">email@exemplo.com</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Nome -->
+                    <div class="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-sm font-medium text-gray-500">Nome Completo</p>
+                                <p class="text-base font-semibold text-gray-800" th:text="${userName}">Nome do Usuário</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Logout Card -->
+        <div class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
+            <div class="p-8">
+                <!-- Logout -->
+                <form th:action="@{/logout}" method="post" class="w-full">
+                    <button type="submit" 
+                            class="w-full flex items-center justify-between p-4 bg-red-50 hover:bg-red-100 rounded-xl transition duration-200 group border-2 border-red-200 hover:border-red-300">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-red-100 group-hover:bg-red-200 rounded-lg flex items-center justify-center mr-4 transition">
+                                <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+                                </svg>
+                            </div>
+                            <div class="text-left">
+                                <p class="text-base font-bold text-red-600">Sair da Conta</p>
+                                <p class="text-sm text-red-500">Desconectar do LifeShift</p>
+                            </div>
+                        </div>
+                        <svg class="w-5 h-5 text-red-600 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Info Card -->
+        <div class="mt-6 bg-blue-50 rounded-xl p-6 border-l-4 border-blue-500">
+            <div class="flex items-start">
+                <svg class="w-6 h-6 text-blue-600 mr-3 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"/>
+                </svg>
+                <div>
+                    <h3 class="font-semibold text-blue-900 mb-2">Sobre sua conta</h3>
+                    <p class="text-sm text-blue-700">
+                        Sua conta está autenticada via Google OAuth 2.0. Suas informações são seguras e 
+                        utilizamos apenas os dados necessários para personalizar sua experiência no LifeShift.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-300 py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-sm">Global Solution FIAP 2025/2 — O Futuro do Trabalho</p>
+        </div>
+    </footer>
+</body>
+</html>

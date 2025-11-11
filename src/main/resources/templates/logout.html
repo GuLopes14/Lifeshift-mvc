@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Logout - LifeShift</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
+</head>
+<body class="bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 min-h-screen flex flex-col items-center justify-center">
+<main class="flex flex-col items-center justify-center min-h-screen">
+    <div class="bg-gray-900 rounded-lg shadow-2xl p-8 flex flex-col items-center w-96">
+        <div class="w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+            </svg>
+        </div>
+
+        <h2 class="text-2xl font-bold text-white mb-4 text-center">
+            Logout Realizado
+        </h2>
+
+        <p class="text-lg text-gray-300 mb-8 text-center">
+            Você foi desconectado com sucesso do LifeShift.
+        </p>
+
+        <div class="flex flex-col gap-4 w-full">
+            <a href="/login" class="w-full py-3 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 text-white font-bold text-lg hover:from-blue-600 hover:to-purple-700 transition text-center">
+                Fazer Login Novamente
+            </a>
+        </div>
+    </div>
+</main>
+
+<footer class="bg-gray-900 text-white py-4 text-center fixed inset-x-0 bottom-0">
+    <div>
+        <p>&copy; 2025 LifeShift. Todos os direitos reservados.</p>
+    </div>
+</footer>
+</body>
+</html>

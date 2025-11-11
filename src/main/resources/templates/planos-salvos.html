@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeShift - Meus Planos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <div class="w-10 h-10 gradient-bg rounded-xl flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                    </div>
+                    <span class="ml-3 text-xl font-bold text-gray-800">LifeShift</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="/intro" class="text-sm text-gray-600 hover:text-gray-800">Início</a>
+                    <a href="/perfil" class="text-sm font-medium text-blue-600 hover:text-blue-700">Novo Plano</a>
+                    <a href="/conta" class="flex items-center text-sm text-gray-600 hover:text-gray-800">
+                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                        </svg>
+                        Conta
+                    </a>
+                    <a href="/logout" class="text-sm text-gray-500 hover:text-gray-700">Sair</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <!-- Page Header -->
+        <div class="mb-12">
+            <div class="flex items-center justify-between mb-4">
+                <div>
+                    <h1 class="text-4xl font-bold text-gray-800 mb-2">Meus Planos de Carreira</h1>
+                    <p class="text-xl text-gray-600">Gerencie e acompanhe seus planos de transição</p>
+                </div>
+                <a href="/perfil" 
+                   class="gradient-bg hover:opacity-90 text-white font-semibold px-6 py-3 rounded-xl transition duration-200 shadow-lg flex items-center">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                    </svg>
+                    Criar Novo Plano
+                </a>
+            </div>
+            
+            <!-- Stats -->
+            <div class="grid grid-cols-3 gap-4 mt-6" th:if="${planos != null and !planos.empty}">
+                <div class="bg-white rounded-xl p-4 border border-gray-100">
+                    <div class="text-3xl font-bold text-blue-600" th:text="${planos.size()}">0</div>
+                    <div class="text-sm text-gray-600">Planos Criados</div>
+                </div>
+                <div class="bg-white rounded-xl p-4 border border-gray-100">
+                    <div class="text-3xl font-bold text-blue-600">6</div>
+                    <div class="text-sm text-gray-600">Meses de Planejamento</div>
+                </div>
+                <div class="bg-white rounded-xl p-4 border border-gray-100">
+                    <div class="text-3xl font-bold text-blue-600">IA</div>
+                    <div class="text-sm text-gray-600">Análise Inteligente</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Planos Grid -->
+        <div th:if="${planos != null and !planos.empty}">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div th:each="plano : ${planos}" 
+                     class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-hover">
+                    <!-- Card Header -->
+                    <div class="gradient-bg p-6 text-white">
+                        <div class="flex justify-between items-start mb-3">
+                            <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+                                </svg>
+                            </div>
+                            <form th:action="@{/deletar-plano}" method="post" style="display:inline;">
+                                <input type="hidden" name="planoId" th:value="${plano.id}">
+                                <button type="submit" 
+                                        class="text-white/70 hover:text-white transition-colors"
+                                        onclick="return confirm('Deseja realmente deletar este plano?')">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                                    </svg>
+                                </button>
+                            </form>
+                        </div>
+                        <h3 class="text-xl font-bold mb-1" th:text="${plano.titulo}">Plano de Carreira</h3>
+                        <p class="text-blue-100 text-sm" th:text="${plano.descricao}">Descrição do plano</p>
+                    </div>
+
+                    <!-- Card Content -->
+                    <div class="p-6">
+                        <!-- Date -->
+                        <div class="flex items-center text-sm text-gray-500 mb-4">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                            </svg>
+                            <span>Criado em </span>
+                            <span class="font-medium ml-1" th:text="${#temporals.format(plano.dataGeracao, 'dd/MM/yyyy')}">10/11/2025</span>
+                        </div>
+
+                        <!-- Tags -->
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-medium">
+                                6 meses
+                            </span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-medium">
+                                Personalizado
+                            </span>
+                            <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">
+                                IA
+                            </span>
+                        </div>
+
+                        <!-- Action Button -->
+                        <a th:href="@{/plano(id=${plano.id})}" 
+                           class="block w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-xl transition duration-200 text-center group">
+                            <span class="inline-flex items-center">
+                                Ver Plano Completo
+                                <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                                </svg>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Empty State -->
+        <div th:if="${planos == null or planos.empty}" 
+             class="bg-white rounded-2xl shadow-lg border border-gray-100 p-16 text-center">
+            <div class="w-24 h-24 gradient-bg rounded-3xl flex items-center justify-center mx-auto mb-6">
+                <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-800 mb-3">Nenhum plano criado ainda</h3>
+            <p class="text-gray-600 mb-8 max-w-md mx-auto">
+                Comece sua jornada de transformação profissional criando seu primeiro plano personalizado de carreira com IA
+            </p>
+            <a th:href="@{/perfil}" 
+               class="inline-flex items-center gradient-bg hover:opacity-90 text-white font-semibold px-8 py-4 rounded-xl transition duration-200 shadow-lg group">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                </svg>
+                <span>Criar Meu Primeiro Plano</span>
+                <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

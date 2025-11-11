@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home - LifeShift</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
+</head>
+<body class="bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 min-h-screen flex flex-col">
+    <header class="bg-gray-900 shadow-lg p-4 flex justify-between items-center fixed w-full top-0 z-50">
+        <h1 class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">LifeShift</h1>
+        <nav class="flex gap-6">
+            <a href="/home" class="text-lg text-blue-400 font-bold hover:text-blue-400 transition">Home</a>
+            <a href="/profile" class="text-lg text-white font-bold hover:text-blue-400 transition">Perfil</a>
+        </nav>
+    </header>
+
+    <main class="flex flex-col items-center justify-center min-h-[80vh] pt-24">
+        <h1 class="mb-10 text-5xl font-bold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
+            LIFESHIFT
+        </h1>
+        <p class="text-2xl text-white mb-8 text-center px-4">
+            Planeje Sua Transição de Carreira com Inteligência Artificial
+        </p>
+        <div class="mb-10 text-lg text-gray-300" th:text="${currentTime}">10:31</div>
+        <a href="/planos" class="mb-10 px-10 py-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 text-white font-bold text-lg shadow-lg hover:from-blue-600 hover:to-purple-700 transition">
+            CRIAR MEU PLANO DE CARREIRA
+        </a>
+    </main>
+
+    <footer class="bg-gray-900 text-white min-h-[17vh] py-8 text-center absolute inset-x-0 bottom-0">
+        <div>
+            <p>&copy; 2025 LifeShift - Planejador Inteligente de Transição de Carreira</p>
+            <p class="text-sm text-gray-400 mt-2">Global Solution FIAP 2025/2</p>
+        </div>
+    </footer>
+</body>
+</html>

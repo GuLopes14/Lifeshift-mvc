@@ -7,10 +7,6 @@
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-blue?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
 
-**Transformando vidas através de educação, inclusão e tecnologia**
-
-[🌐 Website](#) • [📖 Documentação](#) • [🐛 Reportar Bugs](#) • [💡 Sugerir Features](#)
-
 </div>
 
 ---

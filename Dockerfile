@@ -10,8 +10,8 @@ COPY build.gradle settings.gradle ./
 # Copy source code
 COPY src ./src
 
-# Build the application
-RUN ./gradlew clean bootJar -x test --no-daemon
+# Give execute permission and build the application
+RUN chmod +x ./gradlew && ./gradlew clean bootJar -x test --no-daemon
 
 # Stage 2: Runtime
 FROM eclipse-temurin:21-jre-jammy
